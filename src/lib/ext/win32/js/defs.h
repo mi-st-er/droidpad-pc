@@ -41,13 +41,15 @@
 // Input data, as fed to the driver from userland. This is different to the HID descriptor as one may change but not the other
 #include <pshpack1.h>
 typedef struct _INPUT_DATA {
-    LONG	axisX;
-    LONG	axisY;
-    LONG	axisZ;
-    LONG	axisRX;
-    LONG	axisRY;
-    LONG	axisRZ;
-    LONG	buttons;	// 16 Buttons (12 used). This is a long type so that less packing issues are run in to (hopefully!)
+    USHORT	axisX;
+    USHORT	axisY;
+    USHORT	axisZ;
+    USHORT	axisRX;
+    USHORT	axisRY;
+    USHORT	axisRZ;
+    USHORT	slider;
+    USHORT	dial;
+    ULONG	buttons; // 32 Buttons. This is a long type so that less packing issues are run in to (hopefully!)
 } INPUT_DATA, *PINPUT_DATA;
 #include <poppack.h>
 
