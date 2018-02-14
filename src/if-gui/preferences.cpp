@@ -44,8 +44,8 @@ using namespace std;
 #define LOADXRC(_xml, _name, _type) _name = XRCCTRL(*this, #_xml, _type); \
 					    if(_name == NULL) handleXMLError(wxT(#_xml));
 
-#define NUM_AXIS 6
-#define NUM_BUTTONS 12
+#define NUM_AXIS 8
+#define NUM_BUTTONS 32
 
 Preferences::Preferences(wxWindow *parent) {
 	if(!wxXmlResource::Get()->LoadDialog(this, parent, wxT("preferences"))) {
