@@ -72,12 +72,16 @@ OutputManager::~OutputManager() {
 
 void OutputManager::SendJSData(const DPJSData& data, bool firstIteration) {
 	INPUT_DATA pos;
-	pos.axisX = data.axes.size() >= 1 ? data.axes[0] + JS_OFFSET : JS_OFFSET;
-	pos.axisY = data.axes.size() >= 2 ? data.axes[1] + JS_OFFSET : JS_OFFSET;
-	pos.axisZ = data.axes.size() >= 3 ? data.axes[2] + JS_OFFSET : JS_OFFSET;
-	pos.axisRX = data.axes.size() >= 4 ? data.axes[3] + JS_OFFSET : JS_OFFSET;
-	pos.axisRY = data.axes.size() >= 5 ? data.axes[4] + JS_OFFSET : JS_OFFSET;
-	pos.axisRZ = data.axes.size() >= 6 ? data.axes[5] + JS_OFFSET : JS_OFFSET;
+	// data.axes contains signed integer from -AXIS_SIZE to AXIS_SIZE
+	// map it to range from 0 to JS_OFFSET*2+1. Zero is mapped to JS_OFFSET
+	pos.axisX  = data.axes.size() >= 1 ? ((float)data.axes[0]/AXIS_SIZE)*(JS_OFFSET+1) + JS_OFFSET : JS_OFFSET;
+	pos.axisY  = data.axes.size() >= 2 ? ((float)data.axes[1]/AXIS_SIZE)*(JS_OFFSET+1) + JS_OFFSET : JS_OFFSET;
+	pos.axisZ  = data.axes.size() >= 3 ? ((float)data.axes[2]/AXIS_SIZE)*(JS_OFFSET+1) + JS_OFFSET : JS_OFFSET;
+	pos.axisRX = data.axes.size() >= 4 ? ((float)data.axes[3]/AXIS_SIZE)*(JS_OFFSET+1) + JS_OFFSET : JS_OFFSET;
+	pos.axisRY = data.axes.size() >= 5 ? ((float)data.axes[4]/AXIS_SIZE)*(JS_OFFSET+1) + JS_OFFSET : JS_OFFSET;
+	pos.axisRZ = data.axes.size() >= 6 ? ((float)data.axes[5]/AXIS_SIZE)*(JS_OFFSET+1) + JS_OFFSET : JS_OFFSET;
+	pos.slider = data.axes.size() >= 7 ? ((float)data.axes[6]/AXIS_SIZE)*(JS_OFFSET+1) + JS_OFFSET : JS_OFFSET;
+	pos.dial   = data.axes.size() >= 8 ? ((float)data.axes[7]/AXIS_SIZE)*(JS_OFFSET+1) + JS_OFFSET : JS_OFFSET;
 	pos.buttons = 0;
 	for(int i = 0; i < data.buttons.size(); i++) {
 		pos.buttons += data.buttons[i] ? 0x1 << i : 0;
