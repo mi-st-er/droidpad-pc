@@ -35,8 +35,8 @@
 #include "ext/b64/base64.hpp"
 
 #define STD_TO_WX_STRING(_str) wxString(_str.c_str(), wxConvUTF8)
-#define NUM_AXIS 6
-#define NUM_BUTTONS 12
+#define NUM_AXIS 8
+#define NUM_BUTTONS 32
 
 #define PSK_LEN 32
 
