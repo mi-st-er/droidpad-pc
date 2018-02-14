@@ -63,10 +63,11 @@ boost::uuids::random_generator CredentialStore::uuidGen(gen);
 // This class now uses wxConfig. Any other code is simply for compatibility
 
 // REMEMBER: Update these if more buttons / axes added in future
-const int initialButtons[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-vector<int> Data::buttonOrder = vector<int>(initialButtons, initialButtons + 12);
-const int initialAxes[] = {0, 1, 2, 3, 4, 5};
-vector<int> Data::axisOrder = vector<int>(initialAxes, initialAxes + 6);
+const int initialButtons[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+			      16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31};
+vector<int> Data::buttonOrder = vector<int>(initialButtons, initialButtons + 32);
+const int initialAxes[] = {0, 1, 2, 3, 4, 5, 6, 7, -1, -1, -1}; // 8 axes + 3 additional for reordering (-1 for reorder to none)
+vector<int> Data::axisOrder = vector<int>(initialAxes, initialAxes + 11);
 
 int Data::port = 3141;
 
