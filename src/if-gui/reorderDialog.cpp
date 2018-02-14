@@ -43,8 +43,8 @@ using namespace std;
 
 #define CHECK_XML(_name) if(!_name) handleXMLError(wxT(#_name))
 
-#define NUM_AXIS 6
-#define NUM_BUTTONS 12
+#define NUM_AXIS 8
+#define NUM_BUTTONS 32
 
 ReorderDialog::ReorderDialog(wxWindow *parent) {
 	if(!wxXmlResource::Get()->LoadDialog(this, parent, wxT("axisReorder"))) {
@@ -80,7 +80,7 @@ ReorderDialog::ReorderDialog(wxWindow *parent) {
 		buttonSelections[i+1] = getButtonText(i);
 	}
 
-	for(int i = 0; i < NUM_AXIS; i++) {
+	for(int i = 0; i < NUM_AXIS + 3; i++) { // 3 additional axes for reordering
 		wxStaticText *text = new wxStaticText(this, -1, wxString::Format(_("Axis %d ->"), i+1), wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
 		axisGrid->Add(text, 0, wxALIGN_CENTRE | wxEXPAND | wxALL, 3);
 
