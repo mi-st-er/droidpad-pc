@@ -34,6 +34,8 @@ INPUT_DATA droidpad::win32::neutralInputData = {
 	JS_OFFSET,
 	JS_OFFSET,
 	JS_OFFSET,
+	JS_OFFSET,
+	JS_OFFSET,
 	0
 };
 
